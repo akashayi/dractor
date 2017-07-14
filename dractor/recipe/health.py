@@ -47,7 +47,7 @@ class HealthRecipe(Recipe):
         # meaning of that integer
 
         # Use the raw response dictionary to find all status entries
-        status_attributes = [x for x in system_view.dictionary.keys() if 'Status' in x]
+        status_attributes = [k for k, v in system_view.dictionary.items() if 'Status' in k and v is not None]
         status_attributes.remove('PrimaryStatus') # We already saw this
         status_attributes.remove('RollupStatus')  # We don't need the overall rollup status
 
